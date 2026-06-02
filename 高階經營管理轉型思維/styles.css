@@ -292,10 +292,6 @@ h3 {
   border-top: 1px solid var(--line);
 }
 
-.print-page-title {
-  display: none;
-}
-
 .method-block > p {
   color: var(--muted);
   max-width: 860px;
@@ -619,28 +615,49 @@ tr:last-child td { border-bottom: 0; }
     margin: 0;
   }
 
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
   .topbar,
   .toc,
   .toast,
-  .copy {
+  .copy,
+  details summary::marker {
     display: none !important;
   }
 
-  body { background: #fff; }
+  html,
+  body {
+    width: 297mm;
+    margin: 0;
+    background: #fff;
+  }
 
   .deck {
     width: 297mm;
     margin: 0;
+    display: block;
   }
 
-  .slide {
+  .slide-page {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 297mm;
+    height: 167mm;
     min-height: 167mm;
-    height: auto;
-    overflow: visible;
-    padding: 14mm;
+    max-height: 167mm;
+    overflow: hidden;
+    padding: 13mm 15mm;
     break-after: page;
+    break-before: auto;
+    break-inside: avoid;
     page-break-after: always;
+    page-break-before: auto;
+    page-break-inside: avoid;
     margin: 0;
     border: 0;
     border-radius: 0;
@@ -653,14 +670,33 @@ tr:last-child td { border-bottom: 0; }
     overflow: hidden;
   }
 
-  .slide-head {
-    max-width: none;
-    margin-bottom: 10px;
+  .cover.slide-page {
+    display: grid;
+    padding: 0;
   }
 
-  h1 { font-size: 42pt; }
-  h2 { font-size: 23pt; }
-  h3 { font-size: 12.5pt; }
+  .hero-copy {
+    padding: 22mm;
+  }
+
+  .slide-head {
+    max-width: none;
+    margin-bottom: 8px;
+  }
+
+  .slide-head p:not(.eyebrow) {
+    max-width: 250mm;
+  }
+
+  h1 { font-size: 38pt; }
+  h2 {
+    margin-bottom: 6px;
+    font-size: 22pt;
+  }
+  h3 {
+    margin-bottom: 5px;
+    font-size: 11.5pt;
+  }
 
   .slide-head p:not(.eyebrow),
   .lead,
@@ -668,8 +704,39 @@ tr:last-child td { border-bottom: 0; }
   li,
   td,
   th {
-    font-size: 10.5pt;
-    line-height: 1.45;
+    font-size: 9.2pt;
+    line-height: 1.34;
+  }
+
+  .eyebrow {
+    margin-bottom: 5px;
+    font-size: 8.5pt;
+  }
+
+  ul {
+    padding-left: 16px;
+  }
+
+  li {
+    margin-bottom: 2px;
+  }
+
+  .metric-grid,
+  .deliverable-grid,
+  .prompt-library,
+  .qa-grid,
+  .method-grid,
+  .two-col {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .question-flow,
+  .pddro {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .bsc-map {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .metric-grid,
@@ -682,7 +749,7 @@ tr:last-child td { border-bottom: 0; }
   .question-flow,
   .bsc-map,
   .pddro {
-    gap: 8px;
+    gap: 7px;
   }
 
   .metric,
@@ -693,34 +760,86 @@ tr:last-child td { border-bottom: 0; }
   .method-grid article,
   .card,
   .note-panel {
-    padding: 12px;
+    padding: 9px 10px;
     break-inside: avoid;
     page-break-inside: avoid;
   }
 
   .method-block {
-    margin-top: 14px;
-    padding-top: 14px;
+    margin-top: 8px;
+    padding-top: 0;
+    border-top: 0;
   }
 
-  .print-page-title {
-    display: block;
-    break-before: page;
-    page-break-before: always;
-    margin: 0 0 12px;
+  .method-grid strong,
+  .bsc-map strong,
+  .metric strong {
+    font-size: 11.2pt;
   }
 
-  .print-page-title h3 {
-    margin: 0;
-    color: var(--ink);
-    font-size: 23pt;
+  .method-grid span,
+  .bsc-map span,
+  .metric span {
+    margin-bottom: 4px;
+    font-size: 8.5pt;
   }
 
-  .print-page-title .eyebrow {
-    margin-bottom: 6px;
+  .note-panel {
+    margin-top: 8px;
+    border-left-width: 4px;
   }
 
   table {
-    font-size: 9.5pt;
+    font-size: 8pt;
+  }
+
+  th,
+  td {
+    padding: 5px 6px;
+  }
+
+  .prompt-box {
+    margin-top: 8px;
+    padding: 10px;
+  }
+
+  #departments .department-grid {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  #departments .department-grid article {
+    padding: 8px;
+  }
+
+  #departments h3 {
+    font-size: 10.5pt;
+  }
+
+  #departments li {
+    font-size: 7.2pt;
+    line-height: 1.25;
+  }
+
+  #collaboration .slide-head p,
+  #collaboration details,
+  #collaboration .note-panel {
+    display: none;
+  }
+
+  #collaboration table {
+    font-size: 7.4pt;
+  }
+
+  #collaboration th,
+  #collaboration td {
+    padding: 4px 5px;
+  }
+
+  #ai .prompt-library article {
+    padding: 9px;
+  }
+
+  #ai .note-panel {
+    display: none;
   }
 }

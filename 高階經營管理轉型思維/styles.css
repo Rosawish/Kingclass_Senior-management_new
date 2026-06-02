@@ -229,6 +229,13 @@ h3 {
   color: rgba(255, 255, 255, 0.86);
 }
 
+.presenter-line {
+  margin: 18px 0 4px;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 18px;
+  font-weight: 800;
+}
+
 .brand-line {
   display: inline-block;
   margin: 8px 0 0;
@@ -236,28 +243,6 @@ h3 {
   border-bottom: 3px solid var(--king-yellow);
   color: rgba(255, 255, 255, 0.92);
   font-weight: 800;
-}
-
-.hero-stats {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 28px;
-}
-
-.hero-stats span {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 6px;
-  padding: 10px 14px;
-  border: 1px solid rgba(255, 210, 0, 0.38);
-  border-radius: 7px;
-  background: rgba(255, 255, 255, 0.12);
-}
-
-.hero-stats strong {
-  font-size: 24px;
-  color: #fff;
 }
 
 .slide-head {
@@ -621,6 +606,11 @@ tr:last-child td { border-bottom: 0; }
 }
 
 @media print {
+  @page {
+    size: 297mm 167mm;
+    margin: 0;
+  }
+
   .topbar,
   .toc,
   .toast,
@@ -631,12 +621,16 @@ tr:last-child td { border-bottom: 0; }
   body { background: #fff; }
 
   .deck {
-    width: auto;
+    width: 297mm;
     margin: 0;
   }
 
   .slide {
-    min-height: auto;
+    width: 297mm;
+    min-height: 167mm;
+    height: 167mm;
+    overflow: hidden;
+    padding: 14mm;
     page-break-after: always;
     margin: 0;
     border: 0;
@@ -645,6 +639,7 @@ tr:last-child td { border-bottom: 0; }
   }
 
   .cover {
-    min-height: 100vh;
+    min-height: 167mm;
+    height: 167mm;
   }
 }

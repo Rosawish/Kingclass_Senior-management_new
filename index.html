@@ -299,9 +299,17 @@ h3 {
   border-top: 1px solid var(--line);
 }
 
+.print-page-title {
+  display: none;
+}
+
 .method-block > p {
   color: var(--muted);
   max-width: 860px;
+}
+
+.method-grid + .method-grid {
+  margin-top: 16px;
 }
 
 .method-grid article {
@@ -637,7 +645,7 @@ tr:last-child td { border-bottom: 0; }
     min-height: 167mm;
     height: auto;
     overflow: visible;
-    padding: 12mm;
+    padding: 14mm;
     break-after: page;
     page-break-after: always;
     margin: 0;
@@ -654,12 +662,12 @@ tr:last-child td { border-bottom: 0; }
 
   .slide-head {
     max-width: none;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
   h1 { font-size: 42pt; }
-  h2 { font-size: 24pt; }
-  h3 { font-size: 13pt; }
+  h2 { font-size: 23pt; }
+  h3 { font-size: 12.5pt; }
 
   .slide-head p:not(.eyebrow),
   .lead,
@@ -695,6 +703,28 @@ tr:last-child td { border-bottom: 0; }
     padding: 12px;
     break-inside: avoid;
     page-break-inside: avoid;
+  }
+
+  .method-block {
+    margin-top: 14px;
+    padding-top: 14px;
+  }
+
+  .print-page-title {
+    display: block;
+    break-before: page;
+    page-break-before: always;
+    margin: 0 0 12px;
+  }
+
+  .print-page-title h3 {
+    margin: 0;
+    color: var(--ink);
+    font-size: 23pt;
+  }
+
+  .print-page-title .eyebrow {
+    margin-bottom: 6px;
   }
 
   table {
@@ -826,6 +856,12 @@ tr:last-child td { border-bottom: 0; }
             <strong>4S：範疇、關係人、態勢模擬、策略機會</strong>
             <p>先定義產業範疇與關係人，再進行情境與競爭態勢模擬，最後辨識可行之策略機會。</p>
           </article>
+        </div>
+        <div class="print-page-title">
+          <p class="eyebrow">03 平衡計分卡（Balanced Scorecard）</p>
+          <h3>策略發展與創新方法論（續）</h3>
+        </div>
+        <div class="method-grid">
           <article>
             <span>機會掌握</span>
             <strong>資源、能力、能耐與核心能耐</strong>
@@ -833,7 +869,7 @@ tr:last-child td { border-bottom: 0; }
           </article>
           <article>
             <span>定位檢核</span>
-            <strong>ABCD：創造價值、平衡風險、完整性、破壞性</strong>
+            <strong>創造價值、平衡風險、完整性、破壞性</strong>
             <p>檢查策略定位是否能創造顧客價值、平衡風險、涵蓋完整策略活動，並具備突破既有競爭邏輯的可能性。</p>
           </article>
           <article>

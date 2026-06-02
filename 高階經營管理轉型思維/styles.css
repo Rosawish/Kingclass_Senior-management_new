@@ -292,9 +292,17 @@ h3 {
   border-top: 1px solid var(--line);
 }
 
+.print-page-title {
+  display: none;
+}
+
 .method-block > p {
   color: var(--muted);
   max-width: 860px;
+}
+
+.method-grid + .method-grid {
+  margin-top: 16px;
 }
 
 .method-grid article {
@@ -630,7 +638,7 @@ tr:last-child td { border-bottom: 0; }
     min-height: 167mm;
     height: auto;
     overflow: visible;
-    padding: 12mm;
+    padding: 14mm;
     break-after: page;
     page-break-after: always;
     margin: 0;
@@ -647,12 +655,12 @@ tr:last-child td { border-bottom: 0; }
 
   .slide-head {
     max-width: none;
-    margin-bottom: 12px;
+    margin-bottom: 10px;
   }
 
   h1 { font-size: 42pt; }
-  h2 { font-size: 24pt; }
-  h3 { font-size: 13pt; }
+  h2 { font-size: 23pt; }
+  h3 { font-size: 12.5pt; }
 
   .slide-head p:not(.eyebrow),
   .lead,
@@ -688,6 +696,28 @@ tr:last-child td { border-bottom: 0; }
     padding: 12px;
     break-inside: avoid;
     page-break-inside: avoid;
+  }
+
+  .method-block {
+    margin-top: 14px;
+    padding-top: 14px;
+  }
+
+  .print-page-title {
+    display: block;
+    break-before: page;
+    page-break-before: always;
+    margin: 0 0 12px;
+  }
+
+  .print-page-title h3 {
+    margin: 0;
+    color: var(--ink);
+    font-size: 23pt;
+  }
+
+  .print-page-title .eyebrow {
+    margin-bottom: 6px;
   }
 
   table {
